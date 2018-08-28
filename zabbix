@@ -3,3 +3,4 @@ docker run --name nginx -e DB_SERVER_HOST=192.168.50.10 -e POSTGRES_USER=zabbix 
 
 docker stats
 docker logs zabbix
+docker logs nginx
