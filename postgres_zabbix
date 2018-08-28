@@ -10,10 +10,10 @@ docker exec -it postgres_zabbix psql -U postgres
 docker exec -it postgres_zabbix bash
 
 \q (sai do banco)
-\du (lista usuarios)
-\dt (lista tabelas)
-\l (lista databases)
-\c zabbix (seleciona o databases)
+\du (lista os usuarios)
+\dt (lista as tabelas)
+\l (lista os databases)
+\c zabbix (seleciona o database)
 
 create user zabbix;
 alter user zabbix with password 'zabbix';
