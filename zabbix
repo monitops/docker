@@ -1,3 +1,6 @@
 docker run --name zabbix -e DB_SERVER_HOST=192.168.50.10 -e POSTGRES_USER=zabbix -e POSTGRES_PASSWORD=zabbix -p 10051:10051 -d zabbix/zabbix-server-pgsql:alpine-trunk
 
 docker run --name nginx -e DB_SERVER_HOST=192.168.50.10 -e POSTGRES_USER=zabbix -e POSTGRES_PASSWORD=zabbix -e ZBX_SERVER_HOST=192.168.50.10 -e PHP_TZ=America/Sao_Paulo -p 80:80 -d zabbix/zabbix-web-nginx-pgsql:alpine-trunk
+
+docker stats
+docker logs zabbix
