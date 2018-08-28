@@ -1,0 +1,32 @@
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce
+systemctl enable docker
+systemctl start docker
+
+mkdir /postgres
+docker run --name postgres_zabbix -e POSTGRES_PASSWORD=postgres -p 5432:5432 -v /postgres:/var/lib/postgresql/data -d postgres:latest
+docker exec -it postgres_zabbix psql -U postgres
+docker exec -it postgres_zabbix bash
+
+\q (sai do banco)
+\du (lista usuarios)
+\dt (lista tabelas)
+\l (lista databases)
+\c zabbix (seleciona o databases)
+
+create user zabbix;
+alter user zabbix with password 'zabbix';
+create database zabbix;
+grant all privilages on database zabbix to zabbix;
+
+cat schema.sql | psql -U zabbix
+cat images.sql | psql -U zabbix
+cat data.sql | psql -U zabbix
+
+docker ps
+docker ps -a
+docker images
+docker rm nome_do_container
+docker rmi nome_da_imagem
+docker cp . postgres_zabbix:/tmp
